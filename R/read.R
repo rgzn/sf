@@ -157,7 +157,8 @@ process_cpl_read_ogr = function(x, quiet = FALSE, ..., check_ring_dir = FALSE,
 		else
 			x <- data.frame(row.names = seq_along(geom[[1]]))
 	} else {
-		x <- as.data.frame(set_utf8(x[-c(lc.other, which.geom)]), stringsAsFactors = stringsAsFactors)
+		x <- as.data.frame(set_utf8(x[-c(lc.other, which.geom)]), 
+				   stringsAsFactors = stringsAsFactors, optional = TRUE)
 		if (as_tibble) {
 			# "sf" class is added later by `st_as_sf` (and sets all the attributes)
 			x <- tibble::new_tibble(x, attributes(x), nrow = nrow(x))
